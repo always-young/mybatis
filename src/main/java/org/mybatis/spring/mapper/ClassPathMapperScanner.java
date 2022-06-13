@@ -208,6 +208,7 @@ public class ClassPathMapperScanner extends ClassPathBeanDefinitionScanner {
       LOGGER.warn(() -> "No MyBatis mapper was found in '" + Arrays.toString(basePackages)
           + "' package. Please check your configuration.");
     } else {
+      //扫描完mapper后 进行动态代理
       processBeanDefinitions(beanDefinitions);
     }
 
@@ -220,6 +221,7 @@ public class ClassPathMapperScanner extends ClassPathBeanDefinitionScanner {
     for (BeanDefinitionHolder holder : beanDefinitions) {
       definition = (AbstractBeanDefinition) holder.getBeanDefinition();
       boolean scopedProxy = false;
+      //如果被别人也代理过
       if (ScopedProxyFactoryBean.class.getName().equals(definition.getBeanClassName())) {
         definition = (AbstractBeanDefinition) Optional
             .ofNullable(((RootBeanDefinition) definition).getDecoratedDefinition())

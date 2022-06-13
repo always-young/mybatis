@@ -356,6 +356,7 @@ public class MapperScannerConfigurer
 
     ClassPathMapperScanner scanner = new ClassPathMapperScanner(registry);
     scanner.setAddToConfig(this.addToConfig);
+    //@MapperScan可以自定义注解扫描指定注解的mapper
     scanner.setAnnotationClass(this.annotationClass);
     scanner.setMarkerInterface(this.markerInterface);
     scanner.setSqlSessionFactory(this.sqlSessionFactory);

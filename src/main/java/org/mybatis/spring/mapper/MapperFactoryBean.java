@@ -53,6 +53,9 @@ import static org.springframework.util.Assert.notNull;
  */
 public class MapperFactoryBean<T> extends SqlSessionDaoSupport implements FactoryBean<T> {
 
+  /**
+   * 代理的mapper类 通过这个去找xml里面的sql
+   */
   private Class<T> mapperInterface;
 
   private boolean addToConfig = true;

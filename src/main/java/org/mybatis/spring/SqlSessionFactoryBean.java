@@ -592,6 +592,8 @@ public class SqlSessionFactoryBean
       }
     }
 
+    //设置Spring的事务
+    //SpringManagedTransaction spring事务类  如果开启了事务 则每次请求都是同一个连接  如果没开启每个请求都是新的连接
     targetConfiguration.setEnvironment(new Environment(this.environment,
         this.transactionFactory == null ? new SpringManagedTransactionFactory() : this.transactionFactory,
         this.dataSource));
